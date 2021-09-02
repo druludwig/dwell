@@ -1,0 +1,23 @@
+.report-name {
+    text-align: center;
+    margin-bottom: 30px !important;
+}
+
+.report {
+    margin: 40px auto;
+    border: 1px solid rgb(180, 179, 179);
+    text-align: left;
+    padding: 15px;
+    width: 75%;
+    background-color: white;
+}
+
+.task-data {
+    margin: auto auto;
+    margin-bottom: 25px;
+    border: 1px solid burlywood;
+    text-align: left;
+    padding: 15px;
+    width: 80%;
+    background-color: white;
+}
