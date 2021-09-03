@@ -72,7 +72,7 @@ function NewJobForm() {
           <option>Yes</option>
           <option>No</option>
         </select>
-        
+        <p></p>
         <button onClick={saveNewJob}>Submit</button>
 
       </div>
