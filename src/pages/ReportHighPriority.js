@@ -17,27 +17,25 @@ function ReportHighPriority() {
       try {
         const response = await Axios.get("/api/tasks/priority/high");
         setTask(response.data);
-      } catch (err) {
-
-      }
+      } catch (err) { }
     }
     fetchTasks()
   }, [])
+
   // Fetch Jobs
   useEffect(() => {
     const fetchJobs = async () => {
       try {
         const response = await Axios.get("/api/jobs/priority/high");
         setJob(response.data);
-      } catch (err) {
-
-      }
+      } catch (err) { }
     }
     fetchJobs()
   }, [])
 
-  
+
   return (
+    <>
     <div className="report section-to-print">
       <div>
         <h1 className="report-name">🚨<br />High Priority Items</h1>
@@ -57,9 +55,9 @@ function ReportHighPriority() {
             </p>
           </div></>
       })}
-       {job.map((job, key) => {
+      {job.map((job, key) => {
         return <>
-          <div className="task-data"  key={job.id}>
+          <div className="task-data" key={job.id}>
             <h5><b>JOB: </b>{job.name}</h5>
             <p><b>Complete by: </b> {moment(job.date_due).format("MMMM Do YYYY")}</p>
             <p><b>Included:</b> {job.includes}</p>
@@ -68,7 +66,7 @@ function ReportHighPriority() {
           </div></>
       })}
     </div >
-
+      </>
   )
 
 

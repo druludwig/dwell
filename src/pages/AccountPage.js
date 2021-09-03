@@ -47,7 +47,7 @@ function MyAccount() {
 
             <div className="card-body">
               <h5 className="card-title right">{task.name}</h5>
-              <p className="card-text right"><b>Due by:</b> {moment(job.date_due).format("MMMM Do YYYY")}</p>
+              <p className="card-text right"><b>Due by:</b> {moment(task.date_due).format("MMMM Do YYYY")}</p>
               {/* <p className="right"><a href="#" className="btn btn-primary">View Details</a></p> */}
             </div>
           </div>

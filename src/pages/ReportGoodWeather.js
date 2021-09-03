@@ -5,7 +5,6 @@ import '../App.css';
 import '../css/ReportFormatting.css';
 import moment from 'moment';
 
-
 function ReportGoodWeather() {
   let { id } = useParams();
   const [task, setTask] = useState([]);
@@ -15,15 +14,14 @@ function ReportGoodWeather() {
       try {
         const response = await Axios.get("/api/tasks/report/weather");
         setTask(response.data);
-      } catch (err) {
-
-      }
+      } catch (err) { }
     }
     fetchTasks()
   }, [])
 
-  
+
   return (
+    <>
     <div className="report section-to-print">
       <div>
         <h1 className="report-name">☀️<br />Tasks Requiring Good Weather</h1>
@@ -44,6 +42,7 @@ function ReportGoodWeather() {
           </div></>
       })}
     </div >
+    </>
   )
 
 

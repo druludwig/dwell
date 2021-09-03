@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 
 axios.defaults.baseURL = 'https://dwell--api.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 ReactDOM.render(
     <BrowserRouter>

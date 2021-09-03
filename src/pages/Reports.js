@@ -1,8 +1,8 @@
-import { Route, Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import React from 'react';
 import '../App.css';
 import '../css/ReportIndex.css';
-import Axios from "axios";
+
 
 function ReportPage() {
   return (
