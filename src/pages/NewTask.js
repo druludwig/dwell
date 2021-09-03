@@ -35,10 +35,10 @@ function NewTaskForm() {
     <div className="App">
       {/* Instructions - MAKE THIS COLLAPSIBLE SOON*/}
       <div className="instructions-list">
-      <ul>
-        <li>Tasks are items performed by you, family, and friends.</li>
-        <li>Don't spare the details! This entry is used to build on-screen reports and printed material.</li>
-      </ul>
+        <ul>
+          <li>Tasks are items performed by you, family, and friends.</li>
+          <li>Don't spare the details! This entry is used to build on-screen reports and printed material.</li>
+        </ul>
       </div>
 
       <div class="add-task-form">
@@ -86,17 +86,19 @@ function NewTaskForm() {
         />
         {/* High Priority Checkbox */}
         <label className="label">High Priority?</label>
-        <input type="checkbox" name="priority_high" onChange={(e) => {
+        <select type="checkbox" name="priority_high" onChange={(e) => {
           setPriorityHigh(true)
-        }}
-        />
+        }}>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
         {/* Good Weather Checkbox */}
         <label className="label">Good Weather Required?</label>
         <select type="checkbox" name="req_good_weather" onChange={(e) => {
           setGoodWeather(true)
-        }}> 
-        <option>Yes</option>
-        <option>No</option>
+        }}>
+          <option>Yes</option>
+          <option>No</option>
         </select>
         <p></p>
         <button onClick={saveNewTask}>Submit</button>

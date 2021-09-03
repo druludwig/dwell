@@ -24,7 +24,7 @@ function NewJobForm() {
       target_cost: target_cost,
 
     }).then(() => {
-    window.location.assign('/account')
+      window.location.assign('/account')
     })
   }
 
@@ -66,11 +66,14 @@ function NewJobForm() {
         />
         {/* High Priority Checkbox */}
         <label className="label">High Priority?</label>
-        <input type="checkbox" name="priority_high" onChange={(e) => {
+        <select type="checkbox" name="priority_high" onChange={(e) => {
           setPriorityHigh(true)
-        }}
-        />
-                <button onClick={saveNewJob}>Submit</button>
+        }}>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        
+        <button onClick={saveNewJob}>Submit</button>
 
       </div>
 
