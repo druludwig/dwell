@@ -1,6 +1,11 @@
+.center {
+  text-align: center;
+}
+
 .report-name {
     text-align: center;
-    margin-bottom: 30px !important;
+    margin-bottom: 35px !important;
+    line-height: 60px;
 }
 
 .report {
@@ -21,3 +26,26 @@
     width: 80%;
     background-color: white;
 }
+@media print {
+    @page {
+      size: portrait;
+    }
+    body * {
+      visibility: hidden;
+    }
+    .section-to-print, .section-to-print * {
+      visibility: visible;
+    }
+    .section-to-print {
+      width: 100%;
+      position: absolute;
+      border: 0px;
+      left: 0;
+      top: 0;
+    }
+    .task-data {
+      width: 90%;      
+      text-align: left;
+
+    }
+  }

@@ -3,15 +3,18 @@ import { useParams } from 'react-router';
 import '../App.css';
 import '../css/AccountPage.css';
 import Axios from "axios";
+import moment from 'moment';
 
 function MyAccount() {
   let { id } = useParams();
   const [task, setTask] = useState([])
+  const [job, setJob] = useState([])
 
+  // Fetch Tasks
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await Axios.get("http://localhost:1337/api/tasks");
+        const response = await Axios.get("/api/tasks");
         setTask(response.data);
       } catch (err) {
 
@@ -19,22 +22,58 @@ function MyAccount() {
     }
     fetchTasks()
   }, [])
+  // Fetch Jobs
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await Axios.get("/api/jobs");
+        setJob(response.data);
+      } catch (err) {
+
+      }
+    }
+    fetchJobs()
+  }, [])
+
+  const DateDisplay = () => {
+    let date = moment(task.date_due).format("MMMM Do YYYY")
+    return date
+  }
 
   return (
-    <div className="task-container">
-      {task.map((task, key) => {
-        return <div className="card" key={task.id}>
+    <>
+      <div className="task-container">
+        <h1>Tasks</h1>
+        {task.map((task, key) => {
+          return <div className="card" key={task.id}>
 
-          <img src="./images/task-icon.png" className="card-img-top" alt="Task Icon" />
+            {/* <img src="./images/task-icon.png" className="card-img-top" alt="Task Icon" /> */}
 
-          <div className="card-body">
-            <h5 className="card-title right">{task.name}</h5>
-            <p className="card-text right">Due: {task.date_due}</p>
-            <p className="right"><a href="#" className="btn btn-primary">View Details</a></p>
+            <div className="card-body">
+              <h5 className="card-title right">{task.name}</h5>
+              <p className="card-text right"><b>Due by:</b> {DateDisplay()}</p>
+              {/* <p className="right"><a href="#" className="btn btn-primary">View Details</a></p> */}
+            </div>
           </div>
-        </div>
-      })}
-    </div>
+        })}
+      </div>
+      <hr />
+      <div className="task-container">
+        <h1>Jobs</h1>
+        {job.map((job, key) => {
+          return <div className="card" key={task.id}>
+
+            {/* <img src="./images/task-icon.png" className="card-img-top" alt="Task Icon" /> */}
+
+            <div className="card-body">
+              <h5 className="card-title right">{job.name}</h5>
+              <p className="card-text right">Due: {job.date_due}</p>
+              {/* <p className="right"><a href="#" className="btn btn-primary">View Details</a></p> */}
+            </div>
+          </div>
+        })}
+      </div>
+    </>
   )
 
 

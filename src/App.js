@@ -1,7 +1,6 @@
 // Import necessities
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Axios from "axios";
 import { Route, Links } from 'react-router-dom';
 
 // Import pages
@@ -15,6 +14,9 @@ import ReportNext7Days from './pages/ReportNext7Days';
 import ReportNext30Days from './pages/ReportNext30Days';
 import ReportGoodWeather from './pages/ReportGoodWeather';
 import ReportHelpRequired from './pages/ReportHelpRequired';
+import ReportAllTasks from './pages/ReportAllTasks';
+import ReportAllJobs from './pages/ReportAllJobs';
+import ReportHighPriority from './pages/ReportHighPriority';
 
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
       <Route exact path="/ReportNext30Days" component={ReportNext30Days} />
       <Route exact path="/ReportGoodWeather" component={ReportGoodWeather} />
       <Route exact path="/ReportHelpRequired" component={ReportHelpRequired} />
+      <Route exact path="/ReportAllTasks" component={ReportAllTasks} />
+      <Route exact path="/ReportAllJobs" component={ReportAllJobs} />
+      <Route exact path="/ReportHighPriority" component={ReportHighPriority} />
     </div>
   )
 };

@@ -6,19 +6,16 @@ import '../css/ReportFormatting.css';
 import moment from 'moment';
 
 
-function ReportMonth() {
+function ReportAllTasks() {
   let { id } = useParams();
   const [task, setTask] = useState([]);
 
   useEffect(() => {
     const fetchTasks = async () => {
-
       try {
-        const response = await Axios.get("/api/tasks/date-report/30");
+        const response = await Axios.get("/api/tasks/");
         setTask(response.data);
-      } catch (err) {
-
-      }
+      } catch (err) { }
     }
     fetchTasks()
   }, [])
@@ -26,11 +23,11 @@ function ReportMonth() {
   return (
     <div className="report section-to-print">
       <div>
-        <h1 className="report-name">📆<br />Tasks Due In Next 30 Days</h1>
+        <h1 className="report-name">📄<br />All Tasks</h1>
       </div>
       {task.map((task, key) => {
         return <>
-          <div className="task-data" id="task-data" key={task.id}>
+          <div className="task-data" key={task.id}>
             <h5>{task.name}</h5>
             <p><b>Complete by:</b> {moment(task.date_due).format("MMMM Do YYYY")}</p>
             <p>{task.description}</p>
@@ -49,4 +46,4 @@ function ReportMonth() {
 
 }
 
-export default ReportMonth;
+export default ReportAllTasks;

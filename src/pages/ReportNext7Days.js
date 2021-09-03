@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import Axios from "axios";
 import '../App.css';
 import '../css/ReportFormatting.css';
-import printJS from 'print-js';
+import moment from 'moment';
 
 
 function ReportWeek() {
@@ -14,7 +14,7 @@ function ReportWeek() {
     const fetchTasks = async () => {
 
       try {
-        const response = await Axios.get("http://localhost:1337/api/tasks/date-report/7");
+        const response = await Axios.get("/api/tasks/date-report/7");
         setTask(response.data);
       } catch (err) {
 
@@ -24,18 +24,15 @@ function ReportWeek() {
   }, [])
 
   return (
-    <div className="report">
+    <div className="report section-to-print">
       <div>
-        <button type="button" className="btn btn-info" onClick={printJS('task-data', 'html')}>
-          Print Report
-        </button>
-        <h1>Due Next 7 Days</h1>
+        <h1 className="report-name">📆<br />Tasks Due In Next 7 Days</h1>
       </div>
       {task.map((task, key) => {
         return <>
           <div className="task-data" id="task-data" key={task.id}>
             <h5>{task.name}</h5>
-            <p><b>Complete by:</b> {task.date_due}</p>
+            <p><b>Complete by: </b>{moment(task.date_due).format("MMMM Do YYYY")}</p>
             <p>{task.description}</p>
             <p>
               <b>Time Required:</b> {task.time_req} minutes<br />

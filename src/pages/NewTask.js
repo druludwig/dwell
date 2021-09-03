@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import '../css/NewTask.css';
+import '../css/EntryForms.css';
 import Axios from "axios";
 
 function NewTaskForm() {
@@ -16,7 +16,7 @@ function NewTaskForm() {
   const [req_good_weather, setGoodWeather] = useState('false')
 
   const saveNewTask = () => {
-    Axios.post("http://localhost:1337/api/tasks", {
+    Axios.post("/api/tasks", {
       name: name,
       description: description,
       date_due: date_due,
@@ -27,7 +27,7 @@ function NewTaskForm() {
       priority_high: priority_high,
       req_good_weather: req_good_weather,
     }).then(() => {
-      alert('New Task Saved!');
+      window.location.assign('/account')
     })
   }
 
@@ -50,7 +50,7 @@ function NewTaskForm() {
         />
         {/* Description Entry */}
         <label className="label">Description</label>
-        <input type="text" name="description" onChange={(e) => {
+        <textarea type="text" name="description" onChange={(e) => {
           setDescription(e.target.value)
         }}
         />
@@ -91,12 +91,14 @@ function NewTaskForm() {
         }}
         />
         {/* Good Weather Checkbox */}
-        <label className="label">Dry Skies Required?</label>
-        <input type="checkbox" name="req_good_weather" onChange={(e) => {
+        <label className="label">Good Weather Required?</label>
+        <select type="checkbox" name="req_good_weather" onChange={(e) => {
           setGoodWeather(true)
-        }}
-        />
-
+        }}> 
+        <option>Yes</option>
+        <option>No</option>
+        </select>
+        <p></p>
         <button onClick={saveNewTask}>Submit</button>
 
       </div>
