@@ -31,7 +31,6 @@ function NewJobForm() {
 
   return (
     <div>
-      <h1>New Job</h1>
       <p>Jobs are tasks that you hire someone to complete.</p>
       <div class="add-task-form">
         {/* Job Name Entry*/}
