@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <h1>Hello to dwell</h1>
-      <h2></h2>
+      <h2><em>Your home has a story to tell</em></h2>
     </div>
   );
 
